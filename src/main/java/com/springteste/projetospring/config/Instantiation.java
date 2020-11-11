@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.springteste.projetospring.domain.Post;
 import com.springteste.projetospring.domain.User;
+import com.springteste.projetospring.dto.AuthorDTO;
 import com.springteste.projetospring.repositories.PostRepository;
 import com.springteste.projetospring.repositories.UserRepository;
 
@@ -31,10 +32,12 @@ public class Instantiation implements CommandLineRunner {
 		User alex = new User(null, "Alex Green", "alex@gmail.com");
 		User bob = new User(null, "BobGrey", "bob@gmail.com");
 		
-		Post p1 = new Post(null, Instant.parse("2017-12-25T20:30:50Z"), "Partiu viagem", "Vou viajar para São Paulo. Abraços!", maria);
-		Post p2 = new Post(null, Instant.parse("2018-03-23T15:45:19Z"), "Bom dia", "Acordei feliz hoje!", maria);
-		
 		userRepository.saveAll(Arrays.asList(maria, alex, bob));
+
+		
+		Post p1 = new Post(null, Instant.parse("2017-12-25T20:30:50Z"), "Partiu viagem", "Vou viajar para São Paulo. Abraços!", new AuthorDTO(maria));
+		Post p2 = new Post(null, Instant.parse("2018-03-23T15:45:19Z"), "Bom dia", "Acordei feliz hoje!", new AuthorDTO(maria));
+		
 		postRepository.saveAll(Arrays.asList(p1, p2));
 	}
 }
