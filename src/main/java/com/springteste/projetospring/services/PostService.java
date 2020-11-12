@@ -1,6 +1,6 @@
 package com.springteste.projetospring.services;
 
-import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,7 +26,7 @@ public class PostService {
 		return repo.searchTitle(text);
 	}
 	
-	public List<Post> fullSearch(String text, Instant minDate, Instant maxDate) {
+	public List<Post> fullSearch(String text, Date minDate, Date maxDate) {
 		return repo.fullSearch(text, minDate, maxDate);
 	}
 }

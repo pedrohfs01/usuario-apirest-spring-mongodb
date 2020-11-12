@@ -1,22 +1,22 @@
 package com.springteste.projetospring.dto;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.util.Date;
 
-public class CommentDTO implements Serializable{
+public class CommentDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	private String text;
-	private Instant data;
+	private Date date;
 	private AuthorDTO author;
 	
 	public CommentDTO() {
 	}
 
-	public CommentDTO(String text, Instant data, AuthorDTO author) {
+	public CommentDTO(String text, Date date, AuthorDTO author) {
 		super();
 		this.text = text;
-		this.data = data;
+		this.date = date;
 		this.author = author;
 	}
 
@@ -28,12 +28,12 @@ public class CommentDTO implements Serializable{
 		this.text = text;
 	}
 
-	public Instant getData() {
-		return data;
+	public Date getDate() {
+		return date;
 	}
 
-	public void setData(Instant data) {
-		this.data = data;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	public AuthorDTO getAuthor() {

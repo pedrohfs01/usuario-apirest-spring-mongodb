@@ -2,9 +2,10 @@ package com.springteste.projetospring.resources.util;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
 
 public class URL {
 
@@ -16,7 +17,13 @@ public class URL {
 		}
 	}
 
-	public static Instant convertDate(String minDate, Instant min) {
-		return LocalDateTime.parse(minDate, DateTimeFormatter.ofPattern( "yyyy-MM-dd")).toInstant(null);
+	public static Date convertDate(String textDate, Date defaultValue) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+		try {
+			return sdf.parse(textDate);
+		} catch (ParseException e) {
+			return defaultValue;
+		}		
 	}
 }

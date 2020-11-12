@@ -1,8 +1,8 @@
 package com.springteste.projetospring.domain;
 
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -11,13 +11,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import com.springteste.projetospring.dto.AuthorDTO;
 import com.springteste.projetospring.dto.CommentDTO;
 
-@Document(collection = "post")
-public class Post implements Serializable{
+@Document
+public class Post implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private String id;	
-	private Instant data;
+	private String id;
+	private Date date;
 	private String title;
 	private String body;
 	private AuthorDTO author;
@@ -27,10 +27,10 @@ public class Post implements Serializable{
 	public Post() {
 	}
 
-	public Post(String id, Instant data, String title, String body, AuthorDTO author) {
+	public Post(String id, Date date, String title, String body, AuthorDTO author) {
 		super();
 		this.id = id;
-		this.data = data;
+		this.date = date;
 		this.title = title;
 		this.body = body;
 		this.author = author;
@@ -44,12 +44,12 @@ public class Post implements Serializable{
 		this.id = id;
 	}
 
-	public Instant getData() {
-		return data;
+	public Date getDate() {
+		return date;
 	}
 
-	public void setData(Instant data) {
-		this.data = data;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	public String getTitle() {
@@ -109,4 +109,3 @@ public class Post implements Serializable{
 		return true;
 	}
 }
-
